@@ -1,0 +1,15 @@
+org\example\tliaswebmanagement\pojo\JobOption.class
+org\example\tliaswebmanagement\pojo\LoginInfo.class
+org\example\tliaswebmanagement\pojo\ClazzCountOption.class
+org\example\tliaswebmanagement\pojo\OperateLog.class
+org\example\tliaswebmanagement\pojo\StuQueryParam.class
+org\example\tliaswebmanagement\pojo\Clazz.class
+org\example\tliaswebmanagement\pojo\Result.class
+org\example\tliaswebmanagement\pojo\EmpExpr.class
+org\example\tliaswebmanagement\pojo\EmpLog.class
+org\example\tliaswebmanagement\pojo\Dept.class
+org\example\tliaswebmanagement\pojo\ClazzQueryParam.class
+org\example\tliaswebmanagement\pojo\Emp.class
+org\example\tliaswebmanagement\pojo\EmpQueryParam.class
+org\example\tliaswebmanagement\pojo\Student.class
+org\example\tliaswebmanagement\pojo\PageResult.class

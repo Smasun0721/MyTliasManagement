@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.tliaswebmanagement.mapper.EmpMapper">
+    <update id="update">
+        update emp
+        set
+        <if test="username != null and username != ''">username=#{username},</if>
+        <if test="name != null and name != ''">name=#{name},</if>
+        <if test="gender != null and gender != ''">gender=#{gender},</if>
+        <if test="phone != null and phone != ''">phone=#{phone},</if>
+        <if test="job != null and job != ''">job=#{job},</if>
+        <if test="salary != null and salary != ''">salary=#{salary},</if>
+        <if test="image != null and image != ''">image=#{image},</if>
+        <if test="entryDate != null">entry_date=#{entryDate},</if>
+        <if test="deptId != null and deptId != ''">dept_id=#{deptId},</if>
+        update_time=#{updateTime}
+        where id = #{id}
+    </update>
+
+    <select id="find" resultType="org.example.tliaswebmanagement.pojo.Emp">
+        select e.*, d.name deptName
+        from emp e
+        left join dept d on dept_id = d.id
+        <where>
+            <if test="name != null and name != ''">e.name like concat('%',#{name},'%')</if>
+            <if test="gender != null and gender != ''">and gender = #{gender}</if>
+            <if test="begin != null and end != null">and entry_date between #{begin} and #{end}
+            </if>
+        </where>
+        order by update_time desc
+    </select>
+
+    <select id="findByIds" resultType="org.example.tliaswebmanagement.pojo.Emp">
+        select e.*, d.name deptName
+        from emp e
+        left join dept d on dept_id = d.id
+        where e.id in(<foreach collection="ids" item="id" separator=",">#{id}</foreach>)
+    </select>
+
+    <select id="getEmpJobData">
+        select (case job
+                    when 1 then '班主任'
+                    when 2 then '讲师'
+                    when 3 then '学工主管'
+                    when 4 then '教研主管'
+                    when 5 then '咨询师'
+                    else '其他' end) as pos,
+               count(*)              as number
+        from emp
+        group by pos
+        order by number
+    </select>
+
+    <select id="getEmpGenderData" resultType="java.util.Map">
+        select (case gender
+                    when 1 then '男性'
+                    when 2 then '女性'
+                    else '其他' end) as name,
+               count(*)                 value
+        from emp
+        group by gender;
+    </select>
+
+    <delete id="delete">
+        delete from emp where id in(<foreach collection="ids" item="id" separator=",">#{id}</foreach>)
+    </delete>
+</mapper>
