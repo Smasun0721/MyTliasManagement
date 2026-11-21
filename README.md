@@ -7,6 +7,12 @@
 
 基于 Spring Boot + MyBatis + MySQL 的教务管理系统课程项目，包含部门、员工、班级、学生、日志和报表等模块。
 
+## 系统界面
+
+![Tlias 教学后台首页](docs/dashboard.png)
+
+Tlias 教学后台首页由本地 nginx 前端与 Spring Boot 后端联调后截取，包含班级学员管理、系统信息管理和数据统计管理入口。
+
 ## 系统架构
 
 ![Tlias 教务管理系统架构](docs/architecture.png)
