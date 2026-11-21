@@ -14,7 +14,7 @@ class TliasWebManagementApplicationTests {
     public  void testConnection() throws SQLException {
         String url = "jdbc:mysql://localhost:3306/tlias?useSSL=false";
         String user = "root";
-        String password = "0217"; // 替换为配置中的密码
+        String password = System.getenv("MYSQL_PASSWORD");
         try (Connection conn = DriverManager.getConnection(url, user, password)) {
             System.out.println("连接成功！");
         }
