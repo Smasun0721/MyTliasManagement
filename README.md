@@ -7,6 +7,12 @@
 
 基于 Spring Boot + MyBatis + MySQL 的教务管理系统课程项目，包含部门、员工、班级、学生、日志和报表等模块。
 
+## 系统架构
+
+![Tlias 教务管理系统架构](docs/architecture.png)
+
+请求从 Controller 进入，经 Service 业务层调用 MyBatis Mapper，最终访问 MySQL；JWT 过滤器负责登录校验，AOP 负责操作日志记录。
+
 ## 功能模块
 
 | 模块 | 说明 |
